@@ -1,38 +1,44 @@
-.App {
-  text-align: center;
+:root {
+    --mainBlue: #2a2a72;
+    --lightBlue: #009ffd;
+    --mainWhite: #f3f3f3;
+    --mainDark: #232528;
+    --mainYellow: #ffa400;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    font-family: 'Oswald', sans-serif !important;
+    background-color: var(--mainWhite) !important;
+    color: var(--mainDark) !important;
+    overflow-x: hidden;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.text-title {
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 5px;
+    text-transform: uppercase;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.text-blue {
+    color: var(--mainBlue);
 }
-
-.App-link {
-  color: #61dafb;
+.cart-item:not(:last-of-type) {
+    border-bottom: 2px solid #e3e3e3;
+    padding-bottom: 10px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.quantity {
+    border: 2px solid var(--mainDark) !important;
+    font-size: 8px !important;
+}
+.quantity:hover:not(.count) {
+    background-color: var(--mainDark);
+    color: var(--mainWhite) !important;
+    transition: all .3s ease-in-out;
+}
+.quantity:hover i {
+    color: var(--mainWhite);
+}
+.count {
+    cursor: auto !important;
+}
+.remove {
+    color: var(--mainYellow);
+    cursor: pointer;
 }
