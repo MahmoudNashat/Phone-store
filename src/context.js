@@ -138,6 +138,9 @@ class ProductsProvider extends Component {
             }
         })
     }
+    scrollTop = () => {
+        document.documentElement.scrollTop = 0;
+    }
     render() {
         return (
             <ProductsContext.Provider value={
@@ -150,7 +153,8 @@ class ProductsProvider extends Component {
                     decrement: this.decrement,
                     increment: this.increment,
                     removeItem: this.removeItem,
-                    clearCart: this.clearCart
+                    clearCart: this.clearCart,
+                    scrollTop: this.scrollTop
 
                 }
             }>

@@ -4,7 +4,7 @@ export const ButtonContainer = styled.button`
 background-color: transparent;
 border: 1px solid var(--lightBlue);
 border-color: ${props => props.cart ? "var(--mainYellow)" : "var(--lightBlue)"};
-padding: 3px 10px;
+padding: 7px 15px;
 color: ${props => props.cart ? "var(--mainYellow)" : "var(--lightBlue)"};
 border-radius: 5px; 
 transition: all .2s ease-in-out;

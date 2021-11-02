@@ -12,7 +12,12 @@ export default class Products extends Component {
                 <div className="card">
                     <ProductsConsumer>
                         {value => (
-                            <div className="img-container p-3" onClick={() => value.showdetails(id)}>
+                            <div className="img-container p-3" onClick={
+                                () => {
+                                    value.showdetails(id);
+                                    value.scrollTop();
+                                }
+                            }>
                                 <Link to="/Details">
                                 <img src={img} className="card-img-top" alt="products" />
                                 </Link>
@@ -75,30 +80,50 @@ const ProductWrapper = styled.div`
     transition: all .5s linear;
 
 }
-.cart-btn {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    border: none;
-    background: var(--lightBlue);
-    padding: 5px 6px;
-    border-radius: 10px 0 0 0 ;
-    color: var(--mainWhite);
-    font-size: 16px;
-    text-transform: capitalize;
-    transform: translate(100%, 100%);
-    transition: all .5s linear;
-
+@media (max-width: 768px) {
+    .cart-btn {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        border: none;
+        background: var(--lightBlue);
+        padding: 5px 6px;
+        border-radius: 10px 0 0 0 ;
+        color: var(--mainWhite);
+        font-size: 16px;
+        text-transform: capitalize;
+    }
+    .cart-btn:hover {
+        color: var(--mainBlue);
+        cursor: pointer
+    }
 }
-.img-container:hover .card-img-top {
-    transform: scale(1.1)
-}
-.img-container:hover .cart-btn {
-    transform: translate(0, 0);
-
-}
-.cart-btn:hover {
-    color: var(--mainBlue);
-    cursor: pointer
+@media (min-width: 769px) {
+    .cart-btn {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        border: none;
+        background: var(--lightBlue);
+        padding: 5px 6px;
+        border-radius: 10px 0 0 0 ;
+        color: var(--mainWhite);
+        font-size: 16px;
+        text-transform: capitalize;
+        transform: translate(100%, 100%);
+        transition: all .5s linear;
+    
+    }
+    .img-container:hover .card-img-top {
+        transform: scale(1.1)
+    }
+    .img-container:hover .cart-btn {
+        transform: translate(0, 0);
+    
+    }
+    .cart-btn:hover {
+        color: var(--mainBlue);
+        cursor: pointer
+    }
 } 
 `

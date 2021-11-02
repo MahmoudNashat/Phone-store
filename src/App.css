@@ -5,7 +5,7 @@
     --mainDark: #232528;
     --mainYellow: #ffa400;
 }
-body {
+body, html {
     font-family: 'Oswald', sans-serif !important;
     background-color: var(--mainWhite) !important;
     color: var(--mainDark) !important;
