@@ -9,8 +9,8 @@ export default class Modal extends Component {
         return (
             <ProductsConsumer>
                 {value => {
-                    const {modalOpen, closeModal} = value;
-                    const {img, title, price} = value.modalProduct;
+                    const { modalOpen, closeModal } = value;
+                    const { img, title, price } = value.modalProduct;
                     if (!modalOpen) {
                         return null
                     } else {
@@ -20,17 +20,17 @@ export default class Modal extends Component {
                                     <div className="row">
                                         <div className="p-3 col-8 col-md-6 col-lg-4 text-center text-capitalize mx-auto" id="modal">
                                             <h5>item added to cart</h5>
-                                            <img src={img} className="img-fluid" />
+                                            <img src={img} className="img-fluid" alt="product" />
                                             <h5>{title}</h5>
                                             <h5 className="text-muted">price : $ {price}</h5>
                                             <Link to="/" className="d-block m-2">
-                                                <ButtonContainer onClick={() => {closeModal()}}>
+                                                <ButtonContainer onClick={() => { closeModal() }}>
                                                     continue shopping
                                                 </ButtonContainer>
                                             </Link>
                                             <Link to="/Cart">
-                                                <ButtonContainer cart onClick={() => {closeModal()}}>
-                                                    go to cart  
+                                                <ButtonContainer cart onClick={() => { closeModal() }}>
+                                                    go to cart
                                                 </ButtonContainer>
                                             </Link>
                                         </div>
@@ -43,7 +43,7 @@ export default class Modal extends Component {
             </ProductsConsumer>
         )
 
-    
+
     }
 }
 const ModalContainer = styled.div`

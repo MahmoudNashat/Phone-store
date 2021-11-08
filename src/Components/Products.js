@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
-import propTypes from "prop-types";
-import {ProductsConsumer}  from "../context";
+import { ProductsConsumer } from "../context";
 
 export default class Products extends Component {
     render() {
-        const {img, title, id, inCart, price} = this.props.product;
+        const { img, title, id, inCart, price } = this.props.product;
         return (
             <ProductWrapper className="col-10 col-md-6 col-lg-3 my-3 mx-auto">
                 <div className="card">
@@ -19,46 +18,36 @@ export default class Products extends Component {
                                 }
                             }>
                                 <Link to="/Details">
-                                <img src={img} className="card-img-top" alt="products" />
+                                    <img src={img} className="card-img-top" alt="products" />
                                 </Link>
-                                <button className="cart-btn" 
-                                onClick={() => {
-                                    value.addtocart(id);
-                                    value.openModal(id);
-                                }}
-                                disabled={
-                                    inCart? true: false
-                                }>
+                                <button className="cart-btn"
+                                    onClick={() => {
+                                        value.addtocart(id);
+                                        value.openModal(id);
+                                    }}
+                                    disabled={
+                                        inCart ? true : false
+                                    }>
                                     {
-                                        inCart? <span>in cart</span> : <i className="fas fa-cart-plus" />
+                                        inCart ? <span>in cart</span> : <i className="fas fa-cart-plus" />
                                     }
                                 </button>
                             </div>
                         )}
                     </ProductsConsumer>
                     <div className="card-footer d-flex justify-content-between ">
-                        <p className="m-0 align-self-center"> 
+                        <p className="m-0 align-self-center">
                             {title}
                         </p>
-                        <h5 className="m-0 text-blue fst-italic"> 
+                        <h5 className="m-0 text-blue fst-italic">
                             <span className="me-1">$</span>
-                            {price} 
+                            {price}
                         </h5>
                     </div>
-                </div>  
+                </div>
             </ProductWrapper>
         )
     }
-}
-Products.propTypes = {
-    Products: propTypes.shape({
-        img: propTypes.string,
-        title: propTypes.string,
-        id: propTypes.number,
-        inCart: propTypes.bool,
-        price: propTypes.number
-
-    }).isRequired
 }
 const ProductWrapper = styled.div`
 .card {

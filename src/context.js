@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { storeProducts, detailProduct } from './data';
 
 const ProductsContext = React.createContext();
+
 class ProductsProvider extends Component {
     state = {
-        products: [],
+        products: storeProducts,
         detailProduct: detailProduct,
         cart: [],
         modalProduct: detailProduct,
@@ -13,21 +14,26 @@ class ProductsProvider extends Component {
         cartTax: 0,
         cartTotal: 0
     }
-    componentDidMount () {
-        this.setProducts()
-    }
-    setProducts = () => {
-        let tempProducts = [];
-        storeProducts.forEach(item => {
-            const singleItem = {...item};
-            tempProducts = [...tempProducts, singleItem]
-        })
-        this.setState(() => {
-            return {
-                products: tempProducts
-            }
-        })
+    componentDidMount() {
+        const ProductsData = JSON.parse(localStorage.getItem("products"));
+        if (localStorage.getItem("products")) {
+            this.setState(() => {
+                return {
+                    products: ProductsData.products,
+                    cart: ProductsData.cart
+                }
+            })
+        } else {
+            this.setState(() => {
+                return {
+                    cart: []
+                }
+            })
+        }
 
+    }
+    componentDidUpdate(nextProps, nextState) {
+        localStorage.setItem("products", JSON.stringify(nextState));
     }
     addToCart = (id) => {
         const tempProducts = [...this.state.products];
@@ -39,19 +45,19 @@ class ProductsProvider extends Component {
         this.setState(() => {
             return {
                 products: tempProducts,
-                cart : [...this.state.cart, product]
+                cart: [...this.state.cart, product]
 
             }
-        }, () => {this.addTotals()})
+        }, () => { this.addTotals() })
     }
     getItem = (id) => {
         const productsItem = this.state.products.find(item => item.id === id);
         return productsItem;
     }
     showDetails = (id) => {
-        const product =  this.getItem(id);
+        const product = this.getItem(id);
         this.setState(() => {
-            return {detailProduct: product} 
+            return { detailProduct: product }
         });
     }
     openModal = id => {
@@ -76,15 +82,15 @@ class ProductsProvider extends Component {
         let index = tempCart.indexOf(Item);
         let product = tempCart[index];
         product.count = product.count - 1;
-        if (product.count == 0) {
+        if (product.count === 0) {
             this.removeItem(id);
         } else {
             product.total = product.count * product.price;
             this.setState(() => {
                 return {
-                    cart : [...tempCart]
+                    cart: [...tempCart]
                 }
-            } ,() => this.addTotals());
+            }, () => this.addTotals());
         }
     }
     increment = (id) => {
@@ -94,7 +100,7 @@ class ProductsProvider extends Component {
         let product = tempCart[index];
         product.count = product.count + 1;
         product.total = product.count * product.price;
-        this.setState (() => {
+        this.setState(() => {
             return {
                 cart: [...tempCart]
             }
@@ -115,13 +121,11 @@ class ProductsProvider extends Component {
                 cart: [...tempCart],
                 products: [...tempProducts]
             }
-        }, () => {this.addTotals() })
+        }, () => { this.addTotals() })
     }
     clearCart = () => {
         this.setState(() => {
-            return {cart: []}
-        }, () => {
-            this.setProducts()
+            return { cart: [] }
         })
     }
     addTotals = () => {
@@ -166,4 +170,4 @@ class ProductsProvider extends Component {
 
 const ProductsConsumer = ProductsContext.Consumer;
 
-export  {ProductsConsumer, ProductsProvider};
+export { ProductsConsumer, ProductsProvider };

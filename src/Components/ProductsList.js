@@ -9,13 +9,13 @@ export default class ProductsList extends Component {
                 <React.Fragment>
                     <div className="py-3">
                         <div className="container">
-                            <Title name="our" title="products"/>
+                            <Title name="our" title="products" />
                             <div className="row">
                                 <ProductsConsumer>
                                     {
                                         value => {
-                                            return  value.products.map(product => {
-                                                return <Products key={product.id}  product={product}/>
+                                            return value.products.map(product => {
+                                                return <Products key={product.id} product={product} />
                                             })
                                         }
                                     }

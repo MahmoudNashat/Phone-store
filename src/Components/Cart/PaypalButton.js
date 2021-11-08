@@ -9,7 +9,7 @@ export default class MyApp extends React.Component {
             alert("The payment was succeeded!", payment);
             this.props.clearCart();
             this.props.history.push('/')
-            		// You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
+            // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
         }
 
         const onCancel = (data) => {
@@ -27,12 +27,11 @@ export default class MyApp extends React.Component {
         }
 
         let env = 'sandbox'; // you can set here to 'production' for production
-        let currency = 'USD'; // or you can set this value from your props or state
-        let total = 1; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+        let currency = 'USD'; // or you can set this value from your props or state // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
         // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
 
         const client = {
-            sandbox:    'AQHNT4zxvOoAsGm2M6Pg5TJykuLQfWOzioZreWdPG00UX7rWXQBIKDMNV3Cr_CiF46V4qd0tzU8aq9bS',
+            sandbox: 'AQHNT4zxvOoAsGm2M6Pg5TJykuLQfWOzioZreWdPG00UX7rWXQBIKDMNV3Cr_CiF46V4qd0tzU8aq9bS',
             production: 'YOUR-PRODUCTION-APP-ID',
         }
         // In order to get production's app-ID, you will have to send your app to Paypal for approval first
