@@ -14,7 +14,7 @@ class ProductsProvider extends Component {
         cartTax: 0,
         cartTotal: 0
     }
-    componentDidUpdate(nextProps, nextState) {
+    componentWillUpdate(nextProps, nextState) {
         localStorage.setItem("products", JSON.stringify(nextState));
     }
     componentDidMount() {
