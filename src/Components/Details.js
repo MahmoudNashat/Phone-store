@@ -7,7 +7,7 @@ export default class Details extends Component {
         return (
             <ProductsConsumer>
                 {value => {
-                    const {id, title, company, price, info, img, inCart} = value.detailProduct;
+                    const { id, title, company, price, info, img, inCart } = value.detailProduct;
                     return (
                         <div className="container pt-3 pb-5">
                             <div className="row">
@@ -28,7 +28,7 @@ export default class Details extends Component {
                                         made by : {company}
                                     </h4>
                                     <p className="mt-3 text-blue fw-bold">
-                                        price : <span>$</span> 
+                                        price : <span>$</span>
                                         {price}
                                     </p>
                                     <p className="mt-3 mb-0 fw-bold">
@@ -39,14 +39,14 @@ export default class Details extends Component {
                                     </p>
                                     <div>
                                         <Link to="/">
-                                        <ButtonContainer className="me-3">back to products</ButtonContainer>
+                                            <ButtonContainer className="me-3">back to products</ButtonContainer>
                                         </Link>
-                                        <ButtonContainer cart disabled={inCart?true:false} onClick={ () => {
+                                        <ButtonContainer cart disabled={inCart ? true : false} onClick={() => {
                                             value.addtocart(id);
                                             value.openModal(id);
                                         }
                                         }>
-                                            {inCart? "in cart": "add to cart"}
+                                            {inCart ? "in cart" : "add to cart"}
                                         </ButtonContainer>
                                     </div>
                                 </div>

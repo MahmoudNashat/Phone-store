@@ -9,7 +9,7 @@ export default class Modal extends Component {
         return (
             <ProductsConsumer>
                 {value => {
-                    const { modalOpen, closeModal } = value;
+                    const { modalOpen, closeModal, scrollTop } = value;
                     const { img, title, price } = value.modalProduct;
                     if (!modalOpen) {
                         return null
@@ -29,7 +29,10 @@ export default class Modal extends Component {
                                                 </ButtonContainer>
                                             </Link>
                                             <Link to="/Cart">
-                                                <ButtonContainer cart onClick={() => { closeModal() }}>
+                                                <ButtonContainer cart onClick={() => {
+                                                    closeModal();
+                                                    scrollTop();
+                                                }}>
                                                     go to cart
                                                 </ButtonContainer>
                                             </Link>
