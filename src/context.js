@@ -14,6 +14,9 @@ class ProductsProvider extends Component {
         cartTax: 0,
         cartTotal: 0
     }
+    componentDidUpdate(nextProps, nextState) {
+        localStorage.setItem("products", JSON.stringify(nextState));
+    }
     componentDidMount() {
         const ProductsData = JSON.parse(localStorage.getItem("products"));
         if (localStorage.getItem("products")) {
@@ -31,9 +34,6 @@ class ProductsProvider extends Component {
             })
         }
 
-    }
-    componentDidUpdate(nextProps, nextState) {
-        localStorage.setItem("products", JSON.stringify(nextState));
     }
     addToCart = (id) => {
         const tempProducts = [...this.state.products];
