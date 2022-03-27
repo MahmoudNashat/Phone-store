@@ -6,12 +6,12 @@ import styled from 'styled-components';
 export default class Navbar extends Component {
     render() {
         return (
-            <Nav className="navbar navbar-expand-sm navbar-dark px-sm-5">
+            <Nav className="navbar navbar-expand-sm navbar-dark px-sm-5 ">
                 <div className="container">
                     <Link to="/">
                         <img src={Logo} alt="store logo" />
                     </Link>
-                    <ul className="navbar-nav ms-5">
+                    <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
                                 Products

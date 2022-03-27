@@ -14,6 +14,7 @@ export default class Products extends Component {
                             <div className="img-container p-3" onClick={
                                 () => {
                                     value.showdetails(id);
+                                    value.scrollTop()
                                 }
                             }>
                                 <Link to="/Details">
