@@ -124,8 +124,13 @@ class ProductsProvider extends Component {
         }, () => { this.addTotals() })
     }
     clearCart = () => {
+        this.state.products.map(product => {
+            return product.inCart = false;
+        })
         this.setState(() => {
-            return { cart: [] }
+            return {
+                cart: []
+            }
         })
     }
     addTotals = () => {
