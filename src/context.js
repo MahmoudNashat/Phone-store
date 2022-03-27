@@ -125,11 +125,7 @@ class ProductsProvider extends Component {
     }
     clearCart = () => {
         this.state.products.map(product => {
-<<<<<<< HEAD
             return product.inCart = false;
-=======
-            product.inCart = false
->>>>>>> db75dc0ec9ae7f9eefb60eef95ceb6dd8f0fef08
         })
         this.setState(() => {
             return {
